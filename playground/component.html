@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <app-header style="color:blue"></app-header>
+        <app-footer></app-footer>
+    </div>
+
+    <div id="app2">
+        <app-header style="color:blue"></app-header>
+        <!-- <app-footer></app-footer> >> 에러 발생 (app2에 컴포넌트가 등록 되어 있지 않기 때문에) -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        // --------------- 🟠전역 컴포넌트🟠  --------------- //
+        // 🔅Vue.commponet('컴포넌트이름', 컴포넌트내용); // 컴포넌트 등록 코드
+        Vue.component('app-header', {
+            template: '<h1>Header</h1>'
+        });
+
+        // 🟣인스턴스를 생성 하면, 기본적으로 Root 컴포넌트가 생성 된다.
+        new Vue({
+            el: '#app', // 유일한 key 값을 쓰는게 유용하다.
+            components: {
+                // 🟠지역 컴포넌트 등록하기
+                // 🔅'컴포넌트이름(키)' : 컴포넌트 내용(값)
+                'app-footer': {
+                    template: '<footer>footer</footer>' // <footer> 태그는 문서나 특정 섹션(section)의 푸터(footer)를 정의할 때 사용합니다.
+                }
+            }
+        });
+
+        new Vue({
+            el: '#app2'
+        })
+    </script>
+
+</body>
+</html>

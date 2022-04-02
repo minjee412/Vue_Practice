@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=4, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <router-link to="/login">Login</router-link>
+            <router-link to="/main">Main</router-link>
+        </div>
+
+
+        <!-- vue라우터 자체적으로 가지고 있는 태그 -->
+        <!-- (vue인스턴스와 라우터 인스턴스를 연결 했을때 쓸 수 있음) -->
+        <router-view></router-view>
+    </div>
+
+    <!-------------- 🟡 순서가 굉장히 중요함 🟡 -------------->
+                        <!-- Vue 사용 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+                        <!-- Vue 라우터 사용 -->
+    <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script> 
+    <!-------------------------------------------------------->
+
+    <script>
+        var LoginComponent = {
+            template: '<div>login</div>'
+        }
+
+        var MainComponent = {
+            template: '<div>main</div>'
+        }
+
+
+        // 🔸vue라우터 인스턴스 만들기
+        var router = new VueRouter({
+            
+            // 주소에 #을 없애 주는 옵션
+            mode: 'history',
+
+            // 페이지의 라우팅 정보(배열)
+            routes:[
+                // 로그인 페이지 정보
+                {
+                    // 페이지의 url 이름
+                    path: '/login',
+                    // name: 'login',
+
+                    // 해당 url에서 표시될 컴포넌트
+                    component: LoginComponent
+                },
+
+                // 메인 페이지 정보
+                {
+                    path: '/main',
+                    component: MainComponent
+                }
+            ]
+        });
+
+        // 🔸vue 인스턴스 만들기
+        new Vue({
+            el: '#app',
+            router: router
+        });
+    </script>
+</body>
+</html>

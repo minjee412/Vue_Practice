@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        // var options = {
+        //     el: '#app',
+        //     data: {
+        //         message: 'hi'
+        //     }
+        // }
+        // var vm = new Vue(options);
+
+        ///-------- 아래와 같이 정리 할 수 있다. --------///
+
+        // 기본 Vue 생성자 : var vm = new Vue();
+        var vm = new Vue({
+            // div 의 id를 인스턴스화 시켜야, 그때 부터 '#app'안에 vue 기능들을 넣을 수 있다.
+            el: '#app',
+            data:{
+                message: 'hi'
+            },
+            methods: {
+
+            },
+        });
+        // 💛 생성자 안에서 정의 하는게 가독성이 뛰어 나다.
+
+        
+    </script>
+
+
+</body>
+</html>

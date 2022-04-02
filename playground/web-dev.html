@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- div#app 으로 입력 하면 app이라는 id를 가진 div 태그가 완성 됨-->
+    <div id="app"></div>
+
+    <script>
+        // console.log(div); // 결과 : <div id="app"></div>
+        var div = document.querySelector('#app'); // jquery: $('#app'); 과 같은 역할
+        var str = 'hello world';
+        div.innerHTML=str; // hello world
+
+        str = 'hello world !!!'; // hello world (기존 값그대로 나옴)
+        div.innerHTML = str; // hello world !!! (바뀐값이 나옴)
+    </script>
+
+</body>
+</html>

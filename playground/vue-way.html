@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        var div = document.querySelector('#app');
+        // div.innerHTML = 'hello world'; // hello world
+
+        var viewModel = {}; // viewModel 이라는 객체 선언
+        
+        // (function() {})(); // javaScript의 즉시 실행 함수
+
+        (function(){
+            function init (){
+            // 🎀객체의 동작을 재정의 하는 property
+            // Object.defineProperty(대상 객체, 객체의 속성,{ 정의할 내용 }) 
+    
+                Object.defineProperty(viewModel, 'str', {
+                // 속성에 접근 했을 때 동작을 정의
+                get: function(){
+                    console.log('접근')
+                },
+                // 속상에 값을 할당 했을 때의 동작을 정의
+                set: function(newValue){
+                    console.log('할당',newValue);
+                    render(newValue);
+                }
+            });
+             }   
+        
+            function render(newValue){
+                // ✨ Reactivity : 값이 바뀔때 마다 화면에 나오는 내용을 바꿔준다 !
+                div.innerHTML = newValue; //
+            }
+
+            init();
+        })();
+        
+        
+    </script>
+
+</body>
+</html>
