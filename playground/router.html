@@ -10,7 +10,7 @@
     <div id="app">
         <div>
             <router-link to="/login">Login</router-link>
-            <router-link to="/main">Main</router-link>
+            <router-link to="/image">Image</router-link>
         </div>
 
 
@@ -31,8 +31,8 @@
             template: '<div>login</div>'
         }
 
-        var MainComponent = {
-            template: '<div>main</div>'
+        var ImageComponent = {
+            template: '<img src="https://img.khan.co.kr/news/2019/11/29/l_2019112901003607500286631.jpg"></img>'
         }
 
 
@@ -56,8 +56,8 @@
 
                 // 메인 페이지 정보
                 {
-                    path: '/main',
-                    component: MainComponent
+                    path: '/image',
+                    component: ImageComponent
                 }
             ]
         });
