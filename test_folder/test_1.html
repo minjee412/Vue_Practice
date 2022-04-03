@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+    #menu{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        /* border: 1px solid black; */
+    }
+
+    #link{
+        width: 100px;
+        height: auto;
+        padding: 10px;
+        background: #4E9CAF;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 25px;
+    }
+
+    /* router-link는 html상으로는 <a>태그로 사용되기 때문에 <a>에 스타일 지정 */
+    a{
+        text-decoration: none;
+        display:block;
+        width: 100px;
+        height: auto;
+        background: #4E9CAF;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        line-height: 25px;
+    }
+    </style>
+</head>
+<body>
+    <div id="app" >
+        <!-- <태그명 v-on:하위컴포넌트 이벤트 이름="상위컴포넌트methods이름"></태그명> -->
+        <div id="menu">
+            <app-link id="link" v-on:link="methodsNaver"></app-link>  
+            <router-link to="/message">Message</router-link>      
+            <router-link to="/Image">Image</router-link>      
+        </div>
+        <router-view style="justify-content: center;"></router-view>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script> 
+
+
+    <script>
+    var appLink={
+        template: '<button v-on:click="Naver">Link</button>',
+        methods: {
+            Naver: function(){
+                this.$emit('link');
+            }
+        }
+    }
+
+    var MsgComponent={
+        template: '<div>테스트용 메세지 입니다.</div>',
+    }
+
+    var ImgComponent={
+        template: '<img src="https://img.khan.co.kr/news/2019/11/29/l_2019112901003607500286631.jpg"></img>'
+    }
+
+    var router = new VueRouter({
+        mode:'history',
+        routes:[
+            {
+                path: '/message',
+                component: MsgComponent
+            },
+            {
+                path: '/Image',
+                component: ImgComponent 
+            }
+        ]
+    })
+
+    new Vue({
+        el:'#app',
+        components:{
+            'app-link':appLink
+        },
+        methods:{
+            methodsNaver: function(){
+                window.open("https://www.naver.com");
+                // https:// 를 안붙이면 'Cannot GET /test_folder/www.naver.com'에러 발생
+            }
+        },
+        router: router
+    })
+    </script>
+
+   
+</body>
+</html>
