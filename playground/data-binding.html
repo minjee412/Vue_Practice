@@ -26,10 +26,16 @@
             Loading...
         </div>
         <!------------------------------------>
-        <!-- 🔴 v-if 와 v-show의 차이 ?? 
-                v-if는 false일 경우 아예 사라짐. 
-                v-show는 육안으로만 안보일뿐(display:none상태) 코드는 살아있다. 
-             🔴 -->
+        <!-- 🔴 v-if 와 v-show의 차이 ?? 🔴 -->
+        <!-- v-if는 false일 경우 아예 사라짐. 
+        v-show는 육안으로만 안보일뿐(display:none상태) 코드는 살아있다. -->
+
+        <!-- 🔵 input태그에 입력한 값을 p태그에 나타내보자! 🔵 -->
+        <!-- 1. input 태그에 v-model을 적용해준다. -->
+        <!-- 2. vue 인스턴스 data에 v-model의 초기값을 연결 해준다. -->
+        <!-- 3. <p>에 v-model 값을 binding 해준다. -->
+        <input v-model="message" placeholder="edit me"> 
+        <p>message is : {{message}}</p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -42,7 +48,8 @@
                 num:10,
                 uuid: 'abc1234',
                 name: 'text-blue',
-                loading: true  
+                loading: true,
+                message:""  
             },
             computed:{
                 doubleNum: function(){
