@@ -23,7 +23,7 @@
   //  } 으로 return에 새로운 객체를 만들어야 한다. 
   data: function () {
     return{
-      str: 'Header'
+      str: 'Header' 
     }
   },
   components: {
